@@ -10,7 +10,7 @@ SRC_PARAMETERS = $(CLASS_DIR)/parameters.cpp
 SRC_MAIN = $(SRC_DIR)/main.cpp
 
 # Nome do executável
-TARGET = programa
+TARGET = simulation
 
 # Objetos intermediários
 OBJ_PARAMETERS = $(SRC_PARAMETERS:.cpp=.o)
