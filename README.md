@@ -26,5 +26,7 @@ Siga as etapas abaixo para executar o Makefile e compilar o programa:
 
 6. Execute o programa: ./run.sh
 
+## Para alterar os parâmetros da simulação, vá até o arquivo run.sh e altere o valor atribuido às variáveis declaradas
+
 
 
