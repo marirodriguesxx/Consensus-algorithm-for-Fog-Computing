@@ -1,6 +1,10 @@
 #ifndef PARAMETERS_H
 #define PARAMETERS_H
 
+#include <vector> 
+#include <iostream>
+#include <utility>
+
 class Parameters {
 private:
     int num_nodes_fog;
@@ -49,6 +53,7 @@ public:
     void setRoundRewardRelevant(double roundRewardRelevant);
     void setRoundRewardNeutral(double roundRewardNeutral);
     void setRoundRewardBlocked(double roundRewardBlocked);
+
 };
 
 #endif // PARAMETERS_H

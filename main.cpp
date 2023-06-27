@@ -1,10 +1,10 @@
 #include <iostream>
 #include <random>
-#include "classes/parameters.h"
-#include<vector>
+#include "classes/parameters/parameters.h"
+#include <utility>
 
 // Função que retorna um número aleatório entre min e max (inclusive)
-int gerarNumeroAleatorio(int min, int max) {
+int getRamdomNode(int min, int max) {
     std::random_device rd;  // Obtém uma seed de randomização do dispositivo
     std::mt19937 gen(rd()); // Inicializa o gerador com a seed
 
@@ -20,27 +20,34 @@ int main(int argc, char* argv[]){
         return 1;
     }
 
-    // Lê os argumentos da linha de comando e converte para os tipos apropriados
-    int nodesFog = std::stoi(argv[1]);
-    int rounds = std::stoi(argv[2]);
-    int nodesRelevant = std::stoi(argv[3]);
-    int nodesNeutral = std::stoi(argv[4]);
-    int nodesBlocked = std::stoi(argv[5]);
-    double rewardRelevant = std::stod(argv[6]);
-    double rewardNeutral = std::stod(argv[7]);
-    double rewardBlocked = std::stod(argv[8]);
-    double roundRewardRelevant = std::stod(argv[9]);
-    double roundRewardNeutral = std::stod(argv[10]);
-    double roundRewardBlocked = std::stod(argv[11]);
+    // Lê os argumentos da linha de comando e inicializa variavel de parametros
+    Parameters parameters;
 
-    // Cria um objeto da classe Parameters com os valores lidos da linha de comando
-    Parameters parameters(nodesFog, rounds, nodesRelevant, nodesNeutral, nodesBlocked,
-                          rewardRelevant, rewardNeutral, rewardBlocked,
-                          roundRewardRelevant, roundRewardNeutral, roundRewardBlocked);
+    parameters.setNumNodesFog(std::stoi(argv[1]));
+    parameters.setNumRounds(std::stoi(argv[2]));
+
+    parameters.setNumNodesRelevant(std::stoi(argv[3]));
+    parameters.setNumNodesNeutral(std::stoi(argv[4]));
+    parameters.setNumNodesBlocked(std::stoi(argv[5]));
+
+    parameters.setAddRewardRelevant(std::stod(argv[6]));
+    parameters.setAddRewardNeutral(std::stod(argv[7]));
+    parameters.setAddRewardBlocked(std::stod(argv[8]));
+
+    parameters.setRoundRewardRelevant(std::stod(argv[9]));
+    parameters.setRoundRewardNeutral(std::stod(argv[10]));
+    parameters.setRoundRewardBlocked(std::stod(argv[11]));
     /* ------------------------------ */
     std::cout<<"ola mundo, to correndo atrás do prejuízo"<<std::endl;
-    int numero = gerarNumeroAleatorio(1, 100); // Exemplo de uso: gera um número entre 1 e 100
-    std::cout << "Número aleatório: " << numero << std::endl;
+
+    /* Define um vetor com o parametro recebido que representa o número de nós na rede*/
+    std::vector<std::pair<double, std::string>> nodes_fog(parameters.getNumNodesFog(), std::make_pair(0, ""));  // Declarando o vetor com tamanho definido da rede
+    
+    /* iterando sobre todos os rounds */
+    for (int i = 0; i <= parameters.getNumRounds(); i++) {
+        int sorted_to_add = getRamdomNode(0,parameters.getNumRounds());
+        std::cout << "nó sorteado: "<< sorted_to_add <<std::endl;
+    }
     
     return 0;
 }
