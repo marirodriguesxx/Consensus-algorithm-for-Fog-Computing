@@ -1,7 +1,6 @@
-#include <iostream>
 #include <random>
 #include "classes/parameters/parameters.h"
-#include <utility>
+#include "classes/network/network.h"
 
 // Função que retorna um número aleatório entre min e max (inclusive)
 int getRamdomNode(int min, int max) {
